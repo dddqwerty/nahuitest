@@ -1,0 +1,79 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    #canvas {
+
+        border: 1px solid;
+
+
+        width: 100vw;
+        height: 80vh;
+        /* background-image: url('images/hero.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center; */
+    }
+</style>
+
+<body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+
+</body>
+<script>
+
+    var cvs = document.getElementById("canvas");
+    var ctx = cvs.getContext("2d");
+
+    var hero = new Image();
+
+    hero.src = "./images/hero.png";
+    hero.width = 50;
+
+    var i = 0;
+    x = 300;
+    y = 150;
+
+    document.onkeypress = (event) => {
+
+        console.log(event);
+
+        if (event.key == "w") {
+            console.log("ajillaa");
+
+            y -=15;
+        }
+        if (event.key == "s") {
+
+            y+=10;
+        }
+        if (event.key == "a") {
+
+            x-=10;
+        }
+        if (event.key == "d") {
+
+            x +=10;
+        }
+        
+
+    }
+    console.log(cvs.width, cvs.height)
+    function draw() {
+        ctx.clearRect(0, 0, cvs.width, cvs.height);
+        ctx.drawImage(hero, 0, 0);
+        ctx.fillRect(x, y, 10, 10);
+
+        y++;
+        x++;
+
+        if (x && y)
+         //   requestAnimationFrame(draw);
+        //await myRequestAnimationFrame(draw, 10);
+    }
+    draw();
+
+</script>
+
+</html>
